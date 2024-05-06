@@ -1,0 +1,21 @@
+<?php
+$arr = array();
+$arr2 =[
+    'address' => [
+        'name' => 'Vu',
+        'email' => 'vuntm@gmail.com'
+    ],
+    'address2' => [
+        'name' => 'Minh',
+        'email'=> 'minh@gmail.com'
+    ]
+];
+
+echo $arr2['address']['name'].'<br>';
+
+if(!empty(($arr2))){
+    foreach($arr2 as $i){
+        echo $i['name'].'<br>';
+        echo $i['email'].'<br>';
+    }
+}
