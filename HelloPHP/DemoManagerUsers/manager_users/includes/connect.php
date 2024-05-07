@@ -1,5 +1,5 @@
 <?php
-require_once('D:\Application\VSC\HelloPHP\Day2\manager_users\config.php');
+require_once('D:\Application\VSC\PHPLearningProcess\HelloPHP\DemoManagerUsers\manager_users\config.php');
 
 try {
     if(class_exists('PDO')){
@@ -9,11 +9,10 @@ try {
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION // Tạo thông báo ra ngoại lệ khi gặp lỗi
         ];
         $conn = new PDO($dsn, _USER, _PASSWORD,$option);
-        if($conn){
-            echo "Connected! ";
-        }
+        // if($conn){
+        //     echo "Connected! ";
+        // }
     }
 } catch (Exception $e) {
     echo 'Error: '.$e->getMessage().'<br>';
-    die();
 }

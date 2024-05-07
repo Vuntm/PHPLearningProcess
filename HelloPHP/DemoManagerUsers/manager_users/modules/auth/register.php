@@ -22,9 +22,9 @@ if(isPost()) {
     if(empty($filterAll['email'])){
         $errors['email']['required'] = 'Email không được để trống';
     }else{
-        $email = $filterAll['email'];
-        $sql = "select id from users where email = " .$email;
-        if(getRowCount($sql) > 0){
+        $email = trim($filterAll['email']);
+        $getEmail = "select id from users where email = '$email'" ;
+        if(getRowCount($getEmail) > 0){
             $errors['email']['existed'] = 'Email đã tồn tại';
         }else if(!filter_var($filterAll['email'], FILTER_VALIDATE_EMAIL)){
             $errors['email']['invalid'] = 'Email không đúng định dạng';
@@ -83,7 +83,7 @@ if(isPost()) {
             $content .= 'Nếu không phải bạn vui lòng bỏ qua email này. </br> Trân trọng cảm ơn!!';
             $sendMail = sender($filterAll['email'],$subject,$content);
             if($sendMail){
-                setFlashData('smg','Đăng ký thành công');
+                setFlashData('smg','Đăng ký thành công, vui lòng kiểm tra email để xác thực');
                 setFlashData('smg_type','success');
             }else{
                 setFlashData('smg','Hệ thống đang gặp sự cố vui lòng thử lại sau');
@@ -102,7 +102,7 @@ if(isPost()) {
         redirect('?module=auth&action=register');
     }
 }
-layouts('header', $title);
+layouts('header-login', $title);
 $errors = getFlashData('errors');
 $old = getFlashData('old');
 
@@ -156,4 +156,4 @@ $smg_type = getFlashData('smg_type');
 </div>
 
 <?php
-layouts('footer')?>
+layouts('footer-login')?>

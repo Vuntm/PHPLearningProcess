@@ -39,6 +39,7 @@ try {
 
     $mail->send();
     echo 'Message has been sent';
+    return true;
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
@@ -150,4 +151,18 @@ function form_error($fileName, $beforeHtml= '',$afterHtml='',$error){
 
 function old_data($fileName,$oldData, $default=null){
     return (!empty($oldData[$fileName]))?$oldData[$fileName]:$default;
+}
+
+function isLogin(){
+    $checkLogin = false;
+if(getSession('loginToken')){
+    $tokenLogin = getSession('loginToken');
+    $queryToken = getOne("select user_id from loginToken where token = '$tokenLogin'");
+    if(!empty($queryToken)){
+        $checkLogin = true;
+    }else{
+        removeSession('loginToken');
+    }
+}
+return $checkLogin;
 }

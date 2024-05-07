@@ -1,5 +1,5 @@
 <?php
-
+require_once('connect.php');
 function query($sql, $data = [],$check = false){
     global $conn;
     $result = false;
@@ -38,9 +38,9 @@ function update($table, $data = [],$conditions =''){
     }
     $update = rtrim($update, ',');
    if(!empty($conditions)){
-    $sql = "update" .$table ." set ".$update." where ".$conditions;
+    $sql = "update " .$table ." set ".$update." where ".$conditions;
    }else{
-    $sql = "update" .$table ." set ".$update;
+    $sql = "update " .$table ." set ".$update;
     }
 return query($sql, $data);
 }
@@ -73,6 +73,8 @@ function getOne($sql){
 function getRowCount($sql){
     $result = query($sql, '',true);
     if(!empty($result)){
-return $result->rowCount();
+    return $result->rowCount();
     }
+    return 0;
 }
+// echo getRowCount("select id from users where email = 'kairy9223@gmail.com'");

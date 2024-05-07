@@ -10,7 +10,7 @@ const _PASSWORD = 'root';
 const _CODE = true;
 
 //Thiết lập host
-define('_WEB_HOST','http://'. $_SERVER['HTTP_HOST']. '/Day2/manager_users');
+define('_WEB_HOST','http://'. $_SERVER['HTTP_HOST']. '/HelloPHP/DemoManagerUsers/manager_users');
 define('_WEB_HOST_TEMPLATES',_WEB_HOST. '/templates');
 
 //Thiết lập đường dẫn
