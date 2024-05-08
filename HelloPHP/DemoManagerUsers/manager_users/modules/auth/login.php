@@ -20,19 +20,26 @@ if(isPost()){
             $id = $result['id'];
             $passwordVerify = passwordVerify($password, $result["password"]);
             if($passwordVerify){
-                $tokenLogin = sha1(uniqid().time());
-                $data = [
-                    'id'=>$id,
-                    'token'=>$tokenLogin,
-                    'created_at'=>date('Y-m-d H:i:s')
-                ];
-                $insert = insert('loginToken',$data);
-                if($insert){
-                    setSession('loginToken',$tokenLogin);
-                    redirect('?module=home&action=dashboard');
+                $userLogin = getOne("select * from loginToken where id = '$id'");
+                if($userLogin > 0){
+                    setFlashData('msg','Tài khoản đang đăng nhập ở 1 nơi khác');
+                    setFlashData('msg_type','danger');
+                    redirect('?module=auth&action=login');
                 }else{
-                    setFlashData('msg','Không thể đăng nhập vào lúc này');
-                    setFlashData('msg','danger');
+                    $tokenLogin = sha1(uniqid().time());
+                    $data = [
+                        'id'=>$id,
+                        'token'=>$tokenLogin,
+                        'created_at'=>date('Y-m-d H:i:s')
+                    ];
+                    $insert = insert('loginToken',$data);
+                    if($insert){
+                        setSession('loginToken',$tokenLogin);
+                        redirect('?module=home&action=dashboard');
+                    }else{
+                        setFlashData('msg','Không thể đăng nhập vào lúc này');
+                        setFlashData('msg','danger');
+                    }
                 }
             }else{
                 setFlashData('msg','Mật khẩu không chính xác');
