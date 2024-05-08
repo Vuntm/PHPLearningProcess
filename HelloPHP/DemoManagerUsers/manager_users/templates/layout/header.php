@@ -7,10 +7,10 @@
     echo !empty($title['pageTitle'])?$title['pageTitle'] : 'Quản lý người dùng';
     ?>
     </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></head>
-    <link href="<?php echo _WEB_HOST_TEMPLATES; ?>/css/style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+    <link href="<?php echo _WEB_HOST_TEMPLATES ?>/css/style.css">
 <body>
     
 <header class="p-3 mb-3 border-bottom">
@@ -24,7 +24,7 @@
           <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
           <li><a href="#" class="nav-link px-2 link-body-emphasis">Inventory</a></li>
           <li><a href="#" class="nav-link px-2 link-body-emphasis">Customers</a></li>
-          <li><a href="#" class="nav-link px-2 link-body-emphasis">Products</a></li>
+          <li><a href="<?php echo _WEB_HOST.'/?module=users&action=list' ?>" class="nav-link px-2 link-body-emphasis">Products</a></li>
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">

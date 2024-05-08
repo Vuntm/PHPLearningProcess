@@ -47,9 +47,9 @@ return query($sql, $data);
 
 function delete($table, $conditions =''){
     if(!empty($conditions)){
-        $sql = "delete from" .$table ." where ".$conditions;
+        $sql = "delete from " .$table ." where ".$conditions;
     }else{
-        $sql = "delete from" .$table ;
+        $sql = "delete from " .$table ;
     }
     return query($sql);
 }
