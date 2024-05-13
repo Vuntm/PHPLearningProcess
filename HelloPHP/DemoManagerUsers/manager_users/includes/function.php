@@ -166,3 +166,26 @@ if(getSession('loginToken')){
 }
 return $checkLogin;
 }
+
+function checkTokenDate(){
+    $sql = "SELECT * FROM loginToken";
+    $result = getAll($sql);
+    if(!empty($result)){
+        foreach($result as $row){
+            $id = $row["id"];
+            $token = $row["token"];
+            $time = $row["created_at"];
+
+            $elapsedTime = time() - $time;
+             if ($elapsedTime >= 3600) {
+            // Xóa bản ghi session khỏi database
+            delete('loginToken',"id = '$id'");
+
+            // Xóa token khỏi session của người dùng (nếu có)
+            if (isset($_SESSION['token'][$id]) && $_SESSION['token'][$id] === $token) {
+                unset($_SESSION['token'][$id]);
+                }
+            }
+        }
+    }
+}

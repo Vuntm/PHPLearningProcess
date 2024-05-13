@@ -16,7 +16,6 @@ $CODE = _CODE;
 $module = _MODULE;
 $action = _ACTION;
 
-// sender("kairy9223@gmail.com","test","test");
 
 
 if(!empty($_GET['module'])){
@@ -37,3 +36,5 @@ if(file_exists($path)){
 }else{
     require_once('modules/error/404.php');
 }
+
+checkTokenDate();
