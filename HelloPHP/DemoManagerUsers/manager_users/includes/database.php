@@ -24,8 +24,8 @@ function query($sql, $data = [],$check = false){
 
 function insert($table, $data = []){
     $key = array_keys($data);
-    $attribute = implode(',', $key);
     $values = ':'.implode(',:', $key);
+    $attribute = implode(',', $key);
 
     $sql = "insert into " .$table ." (".$attribute.") values (".$values.")";
     return query($sql, $data);
